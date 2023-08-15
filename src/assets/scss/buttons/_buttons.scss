@@ -1,0 +1,9 @@
+@mixin buttons {
+  .main-button {
+    width: 37px;
+    height: 37px;
+    background-color: #25273c;
+    border: none;
+    cursor: pointer;
+  }
+}

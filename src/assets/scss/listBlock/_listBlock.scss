@@ -1,0 +1,37 @@
+@mixin to-do-block {
+  .list-block {
+    min-height: 361px;
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #25273c;
+    color: #fff;
+    border: 1px solid #cccccc14;
+    border-radius: 6px;
+  }
+  .task-block {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  .pagination {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pagination-button {
+    cursor: pointer;
+    background-color: #25273c;
+    border: none;
+  }
+
+  .no-task-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

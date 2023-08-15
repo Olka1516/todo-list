@@ -1,0 +1,24 @@
+@import './wrapper/wrapper';
+@import './inputBlock/inputBlock';
+@import './listBlock/listBlock';
+@import './taskBlock/taskBlock';
+@import './buttons/buttons';
+
+@mixin wrapper {
+  @include container-sizing;
+}
+
+@mixin input-block {
+  @include buttons;
+  @include add-block;
+}
+
+@mixin list-block {
+  @include buttons;
+  @include to-do-block;
+}
+
+@mixin task-block {
+  @include buttons;
+  @include item-block;
+}
