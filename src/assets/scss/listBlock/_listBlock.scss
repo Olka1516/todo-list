@@ -83,4 +83,17 @@
       transform: rotate(1turn);
     }
   }
+
+  .none {
+    display: none;
+  }
+
+  .notActive {
+    color: #7c7c7c;
+  }
+  .notActiveButton {
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.4s;
+  }
 }

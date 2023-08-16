@@ -14,7 +14,6 @@ const props = defineProps({
   edit: Boolean
 })
 
-tasks.value = props.allTasks
 isEdit.value = props.edit
 const emit = defineEmits(['update:editTask', 'update:removeTask', 'update:doneTask'])
 const removeTask = async (id) => {
@@ -47,18 +46,31 @@ const currentPage = (i) => {
 
 watch(
   () => props.allTasks,
-  (data, old) => {
-    tasks.value = data
-    console.log(data, old)
-    if (old.length === 0 || (index.value < tasks.value.length - 1 && old.length === data.length))
-      return
-    if (old.length > data.length) index.value--
-    else index.value++
-    arrayOfIndex.value[0] = index.value - 2
-    arrayOfIndex.value[1] = index.value - 1
-    arrayOfIndex.value[2] = index.value
+  (newTasks) => {
+    tasks.value = newTasks
+
+    const lastIndex = newTasks.length - 1
+
+    if (lastIndex < 0) {
+      index.value = 0
+      arrayOfIndex.value = [0, 1, 2]
+    } else {
+      if (lastIndex < index.value) {
+        index.value = Math.max(0, lastIndex)
+      } else if (lastIndex - 1 === index.value) {
+        arrayOfIndex.value = [index.value - 1, index.value, index.value + 1]
+      } else {
+        index.value = Math.min(index.value, lastIndex)
+        arrayOfIndex.value = [
+          Math.max(0, index.value - 2),
+          Math.max(1, index.value - 1),
+          Math.max(2, index.value)
+        ]
+      }
+    }
   }
 )
+
 watch(
   () => props.edit,
   (data) => {
@@ -95,17 +107,26 @@ watch(
         />
       </ul>
       <div v-if="tasks.length > 1" class="pagination">
-        <button class="pagination-button" @click="prev"><IconArrowPrev /></button>
+        <button class="pagination-button" @click="prev" :class="{ notActiveButton: 0 === index }">
+          <IconArrowPrev />
+        </button>
         <button
           type="button"
           class="pagination-button"
           v-for="i in arrayOfIndex"
           :key="i"
           @click="currentPage(i)"
+          :class="{ none: !tasks[i] }"
         >
-          <h4>{{ i + 1 }}</h4>
+          <h4 :class="{ notActive: i !== index }">{{ i + 1 }}</h4>
         </button>
-        <button class="pagination-button" @click="next"><IconArrowNext /></button>
+        <button
+          class="pagination-button"
+          @click="next"
+          :class="{ notActiveButton: tasks.length - 1 === index }"
+        >
+          <IconArrowNext />
+        </button>
       </div>
     </div>
     <div v-else class="no-task-block">
