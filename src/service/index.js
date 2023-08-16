@@ -12,7 +12,7 @@ import {
 
 export const getTodos = async () => {
   const db = getFirestore()
-  const data = query(collection(db, 'todos'), orderBy('dataCreate', 'asc'))
+  const data = query(collection(db, 'todos'), orderBy('dataCreate', 'desc'))
   const dataSnapshot = await getDocs(data)
   const tasks = []
   let index = 0,
@@ -29,11 +29,11 @@ export const getTodos = async () => {
   return tasks
 }
 
-export const addNewTaskToBack = async (task) => {
+export const generateNewTask = async (task) => {
   const db = getFirestore()
   const taskDoc = await addDoc(collection(db, 'todos'), {
     text: task,
-    crossedText: false,
+    isTextDone: false,
     dataCreate: new Date()
   })
   await updateDoc(taskDoc, {
@@ -56,11 +56,10 @@ export const editThisTaskById = async (task) => {
   })
 }
 
-//here not from here
-export const setTaskToTrue = async (task) => {
+export const setTaskIsDoneById = async (task) => {
   const db = getFirestore()
   const clientsRef = doc(db, 'todos', task.id)
   await updateDoc(clientsRef, {
-    crossedText: task.crossedText
+    isTextDone: !task.isTextDone
   })
 }

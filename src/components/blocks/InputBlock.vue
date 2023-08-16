@@ -1,6 +1,6 @@
 <script setup>
-import IconPlus from './icons/IconPlus.vue'
-import IconCheck from './icons/IconCheck.vue'
+import IconPlus from '../icons/IconPlus.vue'
+import IconCheck from '../icons/IconCheck.vue'
 import { ref, watch } from 'vue'
 
 const props = defineProps({
@@ -51,6 +51,6 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-@use '../assets/scss/index.scss';
+@use '../../assets/scss/index.scss';
 @include index.input-block;
 </style>

@@ -1,8 +1,8 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
-import InputBlock from './components/InputBlock.vue'
-import ListBlock from './components/ListBlock.vue'
-import { todosStore } from './stores'
+import InputBlock from './components/blocks/InputBlock.vue'
+import ListBlock from './components/blocks/ListBlock.vue'
+import { todosStore } from './store'
 const store = todosStore()
 const selectedEditTask = ref('')
 const isEdit = ref(false)
@@ -14,6 +14,10 @@ const addTask = async (task) => {
 
 const removeTask = async (id) => {
   await store.removeTask(id)
+}
+
+const doneTask = async (task) => {
+  await store.doneTask(task)
 }
 
 const editTask = (task) => {
@@ -40,7 +44,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <img src="./assets/pictues/background.jpg" class="image-bg" alt="" />
+  <img src="./assets/pictures/background.jpg" class="image-bg" />
   <div class="wrapper">
     <InputBlock
       @update:addTask="(task) => addTask(task)"
@@ -52,6 +56,7 @@ onMounted(async () => {
       :allTasks="tasks"
       :edit="isEdit"
       @update:removeTask="(id) => removeTask(id)"
+      @update:doneTask="(task) => doneTask(task)"
       @update:editTask="(task) => editTask(task)"
     />
   </div>

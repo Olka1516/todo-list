@@ -9,6 +9,11 @@
     color: #fff;
   }
 
+  .crossedText {
+    text-decoration: line-through;
+    color: #b3b3b3;
+  }
+
   .manipulate-block {
     display: flex;
     align-items: center;
@@ -24,21 +29,24 @@
   input {
     display: none;
     &:checked + label {
-      background-color: red;
+      background-color: #373a57;
     }
   }
 
-  label {
+  .checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
     width: 28px;
     height: 28px;
     border: 1px solid #999999;
     border-radius: 5px;
+    cursor: pointer;
   }
   .disabled {
     cursor: not-allowed;
     pointer-events: none;
-    border: 1px solid #999999;
-    background-color: #444444;
+    opacity: 0.2;
   }
 }
