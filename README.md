@@ -1,14 +1,32 @@
-# vue-project
+# Опис задачі
 
-This template should help get you started developing with Vue 3 in Vite.
+1. Створити компоненти:
 
-## Recommended IDE Setup
+- Створити компонент InputBlock з полем вводу для нової задачі та кнопкою "Додати".
+- Створити компонент ListBlock i TaskBlock для відображення списку задач.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+2. Створити стан застосунку з допомогою Pinia:
 
-## Customize configuration
+- Створити файл store для Pinia і визначити в ньому стан todos (список задач).
+- Створити функції для додавання, видалення, редагування та позначення задачи як виконаної.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+3. Підключити компоненти до головного файлу:
+
+- В App.vue підключити компонент InputBlock, передавши йому функцію додавання задачі та компонент ListBlock, передавши йому список задач та функції видалення, редагування та позначення задачи як виконаної.
+
+4. Управління станом і подіями:
+
+- В компоненті InputBlock, коли користувач натискає кнопку "Додати", викликати функцію Pinia для додавання задачі до стану.
+- В компоненті ListBlock, обробляти події для видалення, редагування та позначення задачи як виконаної, викликаючи відповідні функції Pinia.
+
+5. Збереження стану:
+
+- Додати можливість зберігати стан застосунку після перезавантаження сторінки, використовуючи firebase.
+
+6. Дизайн і стилізація:
+
+- Стилізувати компоненти та інтерфейс, додати кнопку редагування (опційно) для зміни тексту задачі.
+- Забезпечити естетичний і читабельний дизайн.
 
 ## Project Setup
 
@@ -20,16 +38,4 @@ npm install
 
 ```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
