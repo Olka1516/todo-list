@@ -1,32 +1,32 @@
-# Опис задачі
+# Description of the task
 
-1. Створити компоненти:
+1. Create components:
 
-- Створити компонент InputBlock з полем вводу для нової задачі та кнопкою "Додати".
-- Створити компонент ListBlock i TaskBlock для відображення списку задач.
+- Create an InputBlock component with an input field for a new task and an "Add" button.
+- Create a ListBlock and TaskBlock component to display a list of tasks.
 
-2. Створити стан застосунку з допомогою Pinia:
+2. Create application state with Pinia:
 
-- Створити файл store для Pinia і визначити в ньому стан todos (список задач).
-- Створити функції для додавання, видалення, редагування та позначення задачи як виконаної.
+- Create a store file for Pinia and define the status of todos (list of tasks) in it.
+- Create functions for adding, deleting, editing and marking a task as complete.
 
-3. Підключити компоненти до головного файлу:
+3. Connect the components to the main file:
 
-- В App.vue підключити компонент InputBlock, передавши йому функцію додавання задачі та компонент ListBlock, передавши йому список задач та функції видалення, редагування та позначення задачи як виконаної.
+- In App.vue, connect the InputBlock component by giving it the function of adding a task and the ListBlock component by giving it the list of tasks and the functions of deleting, editing and marking a task as completed.
 
-4. Управління станом і подіями:
+4. State and event management:
 
-- В компоненті InputBlock, коли користувач натискає кнопку "Додати", викликати функцію Pinia для додавання задачі до стану.
-- В компоненті ListBlock, обробляти події для видалення, редагування та позначення задачи як виконаної, викликаючи відповідні функції Pinia.
+- In the InputBlock component, when the user clicks the Add button, call the Pinia function to add the task to the state.
+- In the ListBlock component, handle events for deleting, editing and marking a task as complete by calling the appropriate Pinia functions.
 
-5. Збереження стану:
+5. State saving:
 
-- Додати можливість зберігати стан застосунку після перезавантаження сторінки, використовуючи firebase.
+- Add the ability to save the state of the application after reloading the page using firebase.
 
-6. Дизайн і стилізація:
+6. Design and styling:
 
-- Стилізувати компоненти та інтерфейс, додати кнопку редагування (опційно) для зміни тексту задачі.
-- Забезпечити естетичний і читабельний дизайн.
+- Stylize components and interface, add an edit button (optional) to change the task text.
+- Provide an aesthetic and readable design.
 
 ## Project Setup
 
